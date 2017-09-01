@@ -278,8 +278,7 @@ void diffusion(data::Field const& U, data::Field &S)
         calculate_grid_dim(ny, block_dim.y)
     );
 
-#define STENCIL_SHARED
-#ifdef STENCIL_SHARED
+#ifdef __USE_STENCIL_SHARED
     kernels::stencil_shared<<<grid_dim, block_dim, 18*18*sizeof(double)>>>(S.device_data(), U.device_data());
 #else
     kernels::stencil_interior<<<grid_dim, block_dim>>>(S.device_data(), U.device_data());
