@@ -1,4 +1,7 @@
-CXX=CC
+CXX=mpic++
+
+PE_ENV?=GNU
+
 ifeq ($(PE_ENV),GNU)
     # the gnu compiler requires that we specifically enable OpenMP
 	#CXXFLAGS=-O0 -g -fopenmp -DDEBUG
